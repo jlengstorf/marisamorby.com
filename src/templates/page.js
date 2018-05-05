@@ -54,25 +54,63 @@ const Image = styled(Img)`
 const Content = styled('section')`
   grid-column: 3 / span 1;
 
-  & > :first-child {
+  & > div > :first-child {
     font-size: 125%;
     font-weight: 300;
   }
 `;
 
-const Page = ({ data: { page }, location }) => (
-  <Layout location={location}>
-    <SEO data={page} />
-    <Header data-text={page.frontmatter.title}>{page.frontmatter.title}</Header>
-    <ImageWrapper>
-      <Image
-        sizes={page.frontmatter.image.childImageSharp.sizes}
-        alt={page.frontmatter.title}
-      />
-    </ImageWrapper>
-    <Content dangerouslySetInnerHTML={{ __html: page.html }} />
-  </Layout>
-);
+const Page = ({ data: { page }, location }) => {
+  console.log('location.pathname', location.pathname);
+  const pageContent = [
+    <div key="page-content" dangerouslySetInnerHTML={{ __html: page.html }} />,
+    location.pathname === '/contact' && (
+      <form
+        key="contact-form"
+        name="contact"
+        method="POST"
+        action="/thanks"
+        netlify-honeypot="full-name"
+        netlify
+      >
+        <p>
+          <label>
+            Name: <input type="text" name="name" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Email: <input type="email" name="email" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message: <textarea name="message" />
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+    ),
+  ];
+
+  return (
+    <Layout location={location}>
+      <SEO data={page} />
+      <Header data-text={page.frontmatter.title}>
+        {page.frontmatter.title}
+      </Header>
+      <ImageWrapper>
+        <Image
+          sizes={page.frontmatter.image.childImageSharp.sizes}
+          alt={page.frontmatter.title}
+        />
+      </ImageWrapper>
+      <Content>{pageContent}</Content>
+    </Layout>
+  );
+};
 
 Page.propTypes = {
   data: PropTypes.shape({
