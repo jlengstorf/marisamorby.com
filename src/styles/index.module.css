@@ -1,0 +1,101 @@
+@import './_variables.css';
+
+.hero {
+  clip-path: polygon(0% 0%, 100% 0, 100% calc(100% - 20px), 0% 100%);
+  max-width: 400px;
+  position: relative;
+
+  & :global(.gatsby-image-outer-wrapper) {
+    margin-top: 0;
+  }
+}
+
+.heading,
+.lede {
+  background-blend-mode: multiply;
+  background-size: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.heading {
+  background-position: top center;
+  clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 40px), 0% 100%);
+  color: var(--color-lightest);
+  font-family: var(--font-family-heading);
+  font-size: 40px;
+  line-height: 1;
+  padding: 4rem 20px 2.5rem;
+  top: 0;
+  z-index: 20;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lede {
+  background-position: bottom center;
+  bottom: 0;
+  clip-path: polygon(0% 30px, 100% 0%, 100% 100%, 0% 100%);
+  color: var(--text-inverted);
+  font-size: 18px;
+  padding: 4rem 20px;
+  text-align: right;
+  z-index: 10;
+}
+
+.tagline {
+  font-size: 137.5%;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  & strong {
+    color: var(--color-lightest);
+  }
+}
+
+.image-wrapper {
+  margin: 0;
+  z-index: 1;
+
+  & img {
+    margin: 0;
+  }
+}
+
+.button {
+  background: var(--color-accent);
+  border: 1px solid color(var(--color-accent) lightness(- 10%));
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 2px var(--color-lightest),
+    0 3px 0 2px color(var(--color-accent) lightness(+ 30%));
+  color: color(var(--color-accent) lightness(- 50%));
+  display: block;
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1;
+  margin: -1.5rem 20px 0;
+  padding: 0.625rem 0.5rem 0.5rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 0 0 color(var(--color-accent) lightness(- 20%));
+  text-transform: uppercase;
+  transition: 250ms all ease-in-out;
+  z-index: 20;
+
+  &:hover,
+  &:focus {
+    border: 1px solid color(var(--color-accent) lightness(- 20%));
+    box-shadow: 0 0 0 3px var(--color-lightest),
+      0 3px 0 3px color(var(--color-accent) lightness(+ 20%));
+    outline: 0;
+    text-shadow: 0 2px 0 color(var(--color-accent) lightness(- 20%));
+  }
+}
+
+.content {
+  padding: 1rem 20px 3rem;
+}
