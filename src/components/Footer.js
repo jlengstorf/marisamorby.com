@@ -44,9 +44,13 @@ const Wrapper = styled('footer')`
 `;
 
 const Nav = styled('nav')`
-  grid-column: 3 / span 1;
+  grid-column: 3 / 4;
   grid-row: 1;
   text-align: center;
+
+  @media (min-width: 800px) {
+    text-align: left;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -66,9 +70,15 @@ const NavLink = styled(Link)`
 
 const Copyright = styled('p')`
   margin-top: 1rem;
-  grid-column: 2 / span 1;
+  grid-column: 2 / 3;
   grid-row: 1;
   text-align: center;
+
+  @media (min-width: 800px) {
+    margin-right: 2rem;
+    margin-top: 0;
+    text-align: right;
+  }
 `;
 
 const Footer = () => (
