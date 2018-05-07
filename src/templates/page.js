@@ -1,7 +1,7 @@
 /* eslint react/no-danger: "off" */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
@@ -60,37 +60,80 @@ const Content = styled('section')`
   }
 `;
 
+const Label = styled('label')`
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1;
+`;
+
+const inputStyle = css`
+  border: 2px solid var(--color-accent);
+  border-radius: 0.25rem;
+  display: block;
+  font-size: 16px;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+`;
+
+const Input = styled('input')`
+  ${inputStyle} width: 65%;
+`;
+
+const Textarea = styled('textarea')`
+  ${inputStyle} height: 10em;
+  width: 100%;
+`;
+
+const Button = styled('button')`
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  border-radius: 0.25rem;
+  color: var(--color-lightest);
+  cursor: pointer;
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  padding: 0.5rem;
+  transition: border-color 200ms linear;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border-color: var(--color-accent-dark);
+  }
+`;
+
+const HoneyPot = styled('div')`
+  display: none;
+`;
+
 const Page = ({ data: { page }, location }) => {
   console.log('location.pathname', location.pathname);
   const pageContent = [
     <div key="page-content" dangerouslySetInnerHTML={{ __html: page.html }} />,
-    location.pathname === '/contact' && (
+    location.pathname === '/contact/' && (
       <form
         key="contact-form"
         name="contact"
         method="POST"
-        action="/thanks"
+        action="/thanks/"
         netlify-honeypot="full-name"
-        netlify
+        data-netlify="true"
       >
-        <p>
-          <label>
-            Name: <input type="text" name="name" />
-          </label>
-        </p>
-        <p>
-          <label>
-            Email: <input type="email" name="email" />
-          </label>
-        </p>
-        <p>
-          <label>
-            Message: <textarea name="message" />
-          </label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
+        <HoneyPot>
+          <Label for="full-name">
+            Don’t fill out this field if you’re a human.
+          </Label>
+          <Input type="text" id="full-name" name="full-name" />
+        </HoneyPot>
+        <Label for="fname">Name</Label>
+        <Input type="text" id="fname" name="name" required />
+        <Label for="email">Email</Label>
+        <Input type="email" id="email" name="email" required />
+        <Label for="phone">Phone Number</Label>
+        <Input type="tel" id="phone" name="phone" required />
+        <Label for="message">Message</Label>
+        <Textarea id="message" name="message" />
+        <Button type="submit">Send Message</Button>
       </form>
     ),
   ];
