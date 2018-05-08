@@ -134,6 +134,7 @@ const Page = ({ data: { page }, location }) => {
         <Label for="message">Message</Label>
         <Textarea id="message" name="message" />
         <Button type="submit">Send Message</Button>
+        <Input type="hidden" name="form-name" value="contact" />
       </form>
     ),
   ];
