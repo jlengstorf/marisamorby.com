@@ -6,7 +6,6 @@ import CategoryLink from '../components/CategoryLink';
 import Layout from '../components/Layout';
 import Pagination from '../components/Pagination';
 import { categories } from '../config';
-import styles from '../styles/blog.module.css';
 
 const getHeading = (isFirstPage, currentPage, totalPages, type, value) => {
   if (type === 'category' && value) {
@@ -32,41 +31,34 @@ const Previews = ({
     type,
     value,
   },
+  location,
 }) => (
-  <Layout>
+  <Layout location={location}>
     {isFirstPage ? (
       <header>
-        <h1 className={styles.previewPageHeading}>
-          {data.intro.frontmatter.title}
-        </h1>
+        <h1>{data.intro.frontmatter.title}</h1>
         <section dangerouslySetInnerHTML={{ __html: data.intro.html }} />
       </header>
     ) : (
-      <h1 className={styles.previewPageHeading}>
-        {getHeading(isFirstPage, currentPage, totalPages, type, value)}
-      </h1>
+      <h1>{getHeading(isFirstPage, currentPage, totalPages, type, value)}</h1>
     )}
     {postGroup.map(({ node: post }) => (
-      <section key={post.id} className={styles.preview}>
-        <h2 className={styles.previewHeading}>
-          <Link className={styles.link} to={`/${post.frontmatter.slug}`}>
-            {post.frontmatter.title}
-          </Link>
+      <section key={post.id}>
+        <h2>
+          <Link to={`/${post.frontmatter.slug}`}>{post.frontmatter.title}</Link>
         </h2>
-        <div className={styles.categoryList}>
+        <div>
           <CategoryLink
             key={`category-${post.frontmatter.category}`}
             category={post.frontmatter.category}
           />
         </div>
-        <p className={styles.excerpt}>
+        <p>
           {post.frontmatter.description
             ? post.frontmatter.description
             : post.excerpt}
         </p>
-        <Link className={styles.readMore} to={`/${post.frontmatter.slug}`}>
-          Read post ›
-        </Link>
+        <Link to={`/${post.frontmatter.slug}`}>Read post ›</Link>
       </section>
     ))}
 
