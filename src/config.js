@@ -3,7 +3,6 @@ export const nav = [
   // { path: '/podcast/', name: 'Podcast' },
   { path: 'https://medium.com/@marisamorby', name: 'Blog', hidden: true },
   { path: '/work/', name: 'Work' },
-  { path: '/articles/', name: 'Articles', hidden: true },
   { path: '/about/', name: 'About' },
   { path: '/contact/', name: 'Contact' },
 ];
@@ -26,14 +25,6 @@ export const social = {
   },
   facebook: {
     appId: '',
-  },
-};
-
-export const colors = {
-  tracedSVG: '#d3f5fe',
-  duotone: {
-    highlight: '#ffffff',
-    shadow: '#39bbdf',
   },
 };
 
