@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import GatsbyLink from 'gatsby-link';
 import styled from 'react-emotion';
 import { nav } from '../config';
 import Grid from './Grid';
@@ -15,10 +15,8 @@ const Wrapper = styled('footer')`
   &::before,
   &::after {
     content: ' ';
-    height: 8px;
     left: 0;
     position: absolute;
-    top: 0;
     width: 100%;
   }
 
@@ -26,21 +24,39 @@ const Wrapper = styled('footer')`
     background-color: var(--color-accent);
     clip-path: polygon(
       0% 0%,
+      calc(50% - 5px) 0%,
+      50% 50%,
+      calc(50% + 5px) 0%,
       100% 0%,
       100% 50%,
-      53% 50%,
+      calc(50% + 5px) 50%,
       50% 100%,
-      47% 50%,
+      calc(50% - 5px) 50%,
       0% 50%
     );
+    height: 4px;
+    top: -2px;
     z-index: 10;
   }
 
-  /* &::after {
-    background-color: var(--color-accent-dark);
-    clip-path: polygon(0% 80%, 100% 50%, 100% 100%, 0% 100%);
-    z-index: 10;
-  } */
+  &::after {
+    background-color: var(--color-lightest);
+    clip-path: polygon(
+      0% 0%,
+      calc(50% - 5px) 0%,
+      50% 50%,
+      calc(50% + 5px) 0%,
+      100% 0%,
+      100% 25%,
+      calc(50% + 5px) 25%,
+      50% 75%,
+      calc(50% - 5px) 25%,
+      0% 25%
+    );
+    height: 4px;
+    top: 0;
+    z-index: 18;
+  }
 `;
 
 const Nav = styled('nav')`
@@ -52,6 +68,17 @@ const Nav = styled('nav')`
     text-align: left;
   }
 `;
+
+const Link = ({ to, children, ...props }) =>
+  /^\/(?!\/)/.test(to) ? (
+    <GatsbyLink to={to} {...props}>
+      {children}
+    </GatsbyLink>
+  ) : (
+    <a href={to} {...props}>
+      {children}
+    </a>
+  );
 
 const NavLink = styled(Link)`
   color: inherit;
