@@ -1,6 +1,8 @@
 export const nav = [
   { path: '/', name: 'Home', hidden: true },
-  { path: '/portfolio/', name: 'Portfolio' },
+  // { path: '/podcast/', name: 'Podcast' },
+  { path: 'https://medium.com/@marisamorby', name: 'Blog', hidden: true },
+  { path: '/work/', name: 'Work' },
   { path: '/articles/', name: 'Articles', hidden: true },
   { path: '/about/', name: 'About' },
   { path: '/contact/', name: 'Contact' },
@@ -28,7 +30,11 @@ export const social = {
 };
 
 export const colors = {
-  tracedSVG: '#f00',
+  tracedSVG: '#d3f5fe',
+  duotone: {
+    highlight: '#ffffff',
+    shadow: '#39bbdf',
+  },
 };
 
 export const categories = {
