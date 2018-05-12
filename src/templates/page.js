@@ -171,7 +171,12 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query PageQuery($slug: String!) {
+  query PageQuery(
+    $slug: String!
+    $duotoneHighlight: String!
+    $duotoneShadow: String!
+    $tracedSVGColor: String!
+  ) {
     page: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -181,8 +186,8 @@ export const query = graphql`
             sizes(
               maxHeight: 300
               maxWidth: 300
-              traceSVG: { color: "#d3f5fe" }
-              duotone: { highlight: "#ffffff", shadow: "#39bbdf" }
+              traceSVG: { color: $tracedSVGColor }
+              duotone: { highlight: $duotoneHighlight, shadow: $duotoneShadow }
             ) {
               ...GatsbyImageSharpSizes_tracedSVG
             }

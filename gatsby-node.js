@@ -193,6 +193,9 @@ exports.createPages = ({ graphql, actions: { createPage, createRedirect } }) =>
             component: templates[type],
             context: {
               slug: page.fields.slug,
+              tracedSVGColor: '#d3f5fe',
+              duotoneHighlight: '#ffffff',
+              duotoneShadow: '#39bbdf',
             },
           });
         });

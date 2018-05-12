@@ -27,7 +27,7 @@ Post.propTypes = {
 };
 
 export const query = graphql`
-  query PostQuery($slug: String!) {
+  query PostQuery($slug: String!, $tracedSVGColor: String!) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -35,7 +35,7 @@ export const query = graphql`
         title
         image {
           childImageSharp {
-            sizes(maxWidth: 690, traceSVG: { color: "#ffdddd" }) {
+            sizes(maxWidth: 690, traceSVG: { color: $tracedSVGColor }) {
               ...GatsbyImageSharpSizes_tracedSVG
             }
           }
