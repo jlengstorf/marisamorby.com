@@ -153,15 +153,17 @@ const NavLink = styled(Link)`
   letter-spacing: 0.125em;
   line-height: 1;
   margin: 0;
-  padding: 0.125rem 0.75rem;
+  padding: 0.125rem 0.5rem 0.25rem;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
+  transition: color 200ms ease-out;
   z-index: 10;
 
   &:active,
   &:focus,
   &:hover {
+    color: var(--color-lightest);
     outline: none;
     text-decoration: none;
   }
@@ -170,7 +172,7 @@ const NavLink = styled(Link)`
     background-color: var(--color-accent-dark);
     border-radius: 0.75em;
     content: ' ';
-    height: 1.25em;
+    height: 1.45em;
     opacity: 0;
     position: absolute;
     right: 0;
