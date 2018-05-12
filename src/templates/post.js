@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const Post = ({ data: { post } }) => (
-  <Layout>
+const Post = ({ data: { post }, location }) => (
+  <Layout location={location}>
     <SEO data={post} article />
     <h1>{post.frontmatter.title}</h1>
     <section dangerouslySetInnerHTML={{ __html: post.html }} />
