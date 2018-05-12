@@ -1,5 +1,5 @@
 ---
-title: Articles from My Brains!
+title: Articles
 image: images/marisa-morby.jpg
 ---
 
