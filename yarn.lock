@@ -5151,7 +5151,7 @@ gatsby-image@^1.0.51:
     babel-runtime "^6.26.0"
     prop-types "^15.6.0"
 
-gatsby-link@^1.6.38-6, gatsby-link@^1.6.44:
+gatsby-link@^1.6.38-6:
   version "1.6.44"
   resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-1.6.44.tgz#31912e66d3b21632ce27e5b7310ec88d9a75eac3"
   dependencies:
@@ -5306,7 +5306,7 @@ gatsby-transformer-sharp@^1.6.24:
     fs-extra "^4.0.2"
     probe-image-size "^4.0.0"
 
-gatsby@^2.0.0-alpha.32:
+gatsby@next:
   version "2.0.0-alpha.32"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.0-alpha.32.tgz#001f3e7ee6af0530bcd7502c855a90e4f0747543"
   dependencies:

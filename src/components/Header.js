@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import styled, { css } from 'react-emotion';
 import { nav } from '../config';
 import Grid from './Grid';
