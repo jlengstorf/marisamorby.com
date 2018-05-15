@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { categories } from '../config';
-import styles from '../styles/category-link.module.css';
 
 const CategoryLink = ({ category, block }) => (
-  <Link
-    to={`/articles/category/${category}`}
-    className={`${styles.link} ${block && styles.linkBlock}`}
-  >
+  <Link to={`/articles/category/${category}`}>
     {categories[category] || category}
   </Link>
 );
