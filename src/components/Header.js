@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import styled, { css } from 'react-emotion';
 import { nav } from '../config';
 import Grid from './Grid';
@@ -86,13 +86,6 @@ const HomeImage = styled(Image)`
     margin-top: 0;
   }
 `;
-
-/* const Bar = styled('div')`
-  align-items: center;
-  background-color: var(--color-accent);
-  border-radius: 0 5rem 5rem 0;
-  margin-top: 0;
-`; */
 
 const LogoWrap = styled('h4')`
   background: var(--color-accent);

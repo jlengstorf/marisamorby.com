@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import CategoryLink from '../components/CategoryLink';
 import Layout from '../components/Layout';
 import Pagination from '../components/Pagination';

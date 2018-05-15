@@ -1,5 +1,5 @@
 import React from 'react';
-import GatsbyLink from 'gatsby-link';
+import { Link } from 'gatsby';
 import styled from 'react-emotion';
 import { nav } from '../config';
 import Grid from './Grid';
@@ -69,18 +69,18 @@ const Nav = styled('nav')`
   }
 `;
 
-const Link = ({ to, children, ...props }) =>
+const LinkWrap = ({ to, children, ...props }) =>
   /^\/(?!\/)/.test(to) ? (
-    <GatsbyLink to={to} {...props}>
+    <Link to={to} {...props}>
       {children}
-    </GatsbyLink>
+    </Link>
   ) : (
     <a href={to} {...props}>
       {children}
     </a>
   );
 
-const NavLink = styled(Link)`
+const NavLink = styled(LinkWrap)`
   color: inherit;
   margin: 0 0.25rem;
   padding: 0.375rem;
