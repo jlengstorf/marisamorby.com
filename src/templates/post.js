@@ -2,13 +2,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
+import Heading from '../components/Heading';
+import MainImage from '../components/MainImage';
+import Content from '../components/Content';
 import SEO from '../components/SEO';
 
 const Post = ({ data: { post }, location }) => (
   <Layout location={location}>
     <SEO data={post} article />
-    <h1>{post.frontmatter.title}</h1>
-    <section dangerouslySetInnerHTML={{ __html: post.html }} />
+    <Heading text={post.frontmatter.title} />
+    <MainImage
+      sizes={post.frontmatter.image.childImageSharp.sizes}
+      alt={post.frontmatter.title}
+    />
+    <Content>
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+    </Content>
   </Layout>
 );
 
@@ -27,7 +36,12 @@ Post.propTypes = {
 };
 
 export const query = graphql`
-  query PostQuery($slug: String!, $tracedSVGColor: String!) {
+  query PostQuery(
+    $slug: String!
+    $duotoneHighlight: String!
+    $duotoneShadow: String!
+    $tracedSVGColor: String!
+  ) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -35,7 +49,12 @@ export const query = graphql`
         title
         image {
           childImageSharp {
-            sizes(maxWidth: 690, traceSVG: { color: $tracedSVGColor }) {
+            sizes(
+              maxHeight: 268
+              maxWidth: 268
+              traceSVG: { color: $tracedSVGColor }
+              duotone: { highlight: $duotoneHighlight, shadow: $duotoneShadow }
+            ) {
               ...GatsbyImageSharpSizes_tracedSVG
             }
           }

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'react-emotion';
-import { nav } from '../config';
 import Grid from './Grid';
+import { color, font } from '../utils/style';
+import { nav } from '../config';
 
 const Wrapper = styled('footer')`
   background-color: #f5f8f9;
-  color: var(--text-light);
+  color: ${color.textLight};
+  font-family: ${font.default};
   font-size: 11px;
   margin-top: 4rem;
   padding: 1.5rem 0 1rem;
@@ -21,7 +23,7 @@ const Wrapper = styled('footer')`
   }
 
   &::before {
-    background-color: var(--color-accent);
+    background-color: ${color.accent};
     clip-path: polygon(
       0% 0%,
       calc(50% - 5px) 0%,
@@ -40,7 +42,7 @@ const Wrapper = styled('footer')`
   }
 
   &::after {
-    background-color: var(--color-lightest);
+    background-color: ${color.lightest};
     clip-path: polygon(
       0% 0%,
       calc(50% - 5px) 0%,
