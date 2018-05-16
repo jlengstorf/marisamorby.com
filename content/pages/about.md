@@ -9,7 +9,9 @@ Marisa Morby is a conversion optimization specialist and user experience researc
 
 Marisa is a frequent speaker on conversion optimization, user research, and designing and driving adoption of processes.
 
-<a href="/contact" class="button" style="margin-bottom: 3rem;">Book Marisa</a>
+<a href="/contact" class="button" style="margin-bottom: 3rem;">
+  <span>Book Marisa</span>
+</a>
 
 ### Upcoming Events
 

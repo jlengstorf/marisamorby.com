@@ -7,11 +7,11 @@ import { button } from '../utils/style';
 const Btn = ({ to, children, ...props }) =>
   /^\/(?!\/)/.test(to) ? (
     <Link to={to} {...props}>
-      {children}
+      <span>{children}</span>
     </Link>
   ) : (
     <a href={to} {...props}>
-      {children}
+      <span>{children}</span>
     </a>
   );
 

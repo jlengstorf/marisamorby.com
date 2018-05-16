@@ -65,58 +65,127 @@ export const button = css`
   line-height: 2;
   margin-top: 2rem;
   max-width: 100%;
+  overflow: hidden;
+  position: relative;
   text-align: center;
   text-decoration: none;
   text-shadow: 1px 2px 1px ${color.accentDark};
-  transition: 100ms all linear;
   width: 300px;
 
-  &:active,
-  &:focus,
-  &:hover {
-    animation: 3s whoosh linear;
-    background: ${color.accentDark};
-    box-shadow: 1px 2px 1px ${color.darkest};
+  span {
+    position: relative;
+    z-index: 10;
+  }
+
+  ::before,
+  ::after {
+    content: ' ';
+    position: absolute;
+    z-index: 1;
+  }
+
+  :active,
+  :focus,
+  :hover {
     cursor: pointer;
     outline: none;
+
+    ::after {
+      animation: 500ms bottomHalf ease-out 1 forwards;
+      background: ${color.accentDark};
+      z-index: 1;
+    }
+
+    ::before {
+      animation: 500ms topHalf ease-in 1 forwards;
+      background: ${color.accent};
+      z-index: 2;
+    }
   }
 
-  @keyframes whoosh {
+  @keyframes bottomHalf {
     0% {
-      background: radial-gradient(
-        circle at 100%,
-        ${color.accentDark},
-        ${color.accentDark} 50%,
-        ${color.accent} 50%
-      );
+      border-radius: 50% 50% 0 0;
+      bottom: -10px;
+      height: 10px;
+      left: calc(50% - 5px);
+      width: 10px;
+    }
+    10% {
+      opacity: 1;
+    }
+    15% {
+      border-radius: 50% 50% 0 0;
+      height: 10px;
+      left: 0;
+      width: 100%;
+    }
+    50% {
+      border-radius: 0;
+      bottom: 0;
+      height: 50%;
+    }
+    51% {
+      height: 100%;
     }
     100% {
-      background: radial-gradient(
-        circle at 0%,
-        ${color.accentDark},
-        ${color.accentDark} 50%,
-        ${color.accent} 50%
-      );
+      border-radius: 0;
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      opacity: 1;
+      width: 100%;
+    }
+  }
+
+  @keyframes topHalf {
+    0% {
+      height: 50%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+    50% {
+      top: 0;
+      height: 50%;
+      left: 0;
+      width: 100%;
+    }
+    85% {
+      border-radius: 0 0 50% 50%;
+      height: 10px;
+      left: 0;
+      width: 100%;
+    }
+    100% {
+      border-radius: 0 0 50% 50%;
+      top: -10px;
+      height: 10px;
+      left: calc(50% - 5px);
+      width: 10px;
     }
   }
 `;
 
-export const reset = css`
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-  }
+export const reset = () =>
+  injectGlobal`
+    html,
+    body,
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+    }
 
-  * + * {
-    margin-top: 1rem;
-  }
+    * + * {
+      margin-top: 1rem;
+    }
 
-  img {
-    max-width: 100%;
-  }
-`;
+    img {
+      max-width: 100%;
+    }
+  `;
 
 const defaults = {
   duration: '150ms',
@@ -129,50 +198,59 @@ export const transition = {
   default: `${defaults.duration} ${defaults.property} ${defaults.easing}`,
 };
 
-export const typography = css`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: ${color.darkest};
-    font-family: ${font.heading};
-    font-weight: normal;
-    line-height: 1;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
-
-    /* Super-sweet multi-colored shadow effect! */
-    &::after {
-      color: ${color.accentDark};
-      content: attr(data-text);
-      font-family: ${font.headingShadow};
-      left: 0;
-      pointer-events: none;
-      position: absolute;
-      top: 0.12em;
-    }
-
-    em,
-    i,
-    strong,
-    b {
+export const typography = () =>
+  injectGlobal`
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: ${color.darkest};
+      font-family: ${font.heading};
       font-weight: normal;
-    }
-  }
+      line-height: 1;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: antialiased;
 
-  a {
-    padding: 0.125em;
+      /* Super-sweet multi-colored shadow effect! */
+      &::after {
+        color: ${color.accentDark};
+        content: attr(data-text);
+        font-family: ${font.headingShadow};
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 0.12em;
+      }
 
-    &:hover,
-    &:active,
-    &:focus {
-      outline: 2px solid ${color.accent};
+      em,
+      i,
+      strong,
+      b {
+        font-weight: normal;
+      }
     }
-  }
-`;
+
+    a {
+      padding: 0.125em;
+
+      &:hover,
+      &:active,
+      &:focus {
+        outline: 2px solid ${color.accent};
+      }
+    }
+
+    .screen-reader-text {
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+      position: absolute;
+      height: 1px;
+      width: 1px;
+    }
+  `;
 
 export default {
   addFonts,

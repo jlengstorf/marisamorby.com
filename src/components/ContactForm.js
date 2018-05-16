@@ -73,7 +73,9 @@ const ContactForm = ({ action, name }) => (
     <Input type="tel" id="phone" name="phone" required />
     <Label for="message">Message</Label>
     <Textarea id="message" name="message" required />
-    <Submit type="submit">Send Message</Submit>
+    <Submit type="submit">
+      <span>Send Message</span>
+    </Submit>
     <Input type="hidden" name="form-name" value="contact" />
   </Form>
 );
