@@ -1,6 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { css } from 'react-emotion';
 import { Link } from 'gatsby';
+
+const Wrapper = styled('aside')`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const moveLeft = css`
+  margin-right: auto;
+`;
+const moveRight = css`
+  margin-left: auto;
+`;
+
+const PageLink = styled(Link)`
+  font-size: 0.75rem;
+  font-weight: 100;
+  letter-spacing: 0.2rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+`;
 
 const Pagination = ({
   isFirstPage,
@@ -9,28 +32,33 @@ const Pagination = ({
   totalPages,
   linkBase,
 }) => (
-  <div>
+  <Wrapper>
     {!isFirstPage &&
       currentPage !== 2 && (
-        <Link to={linkBase} title="jump to newest posts">
+        <PageLink to={linkBase} title="jump to newest posts">
           « <span className="screen-reader-text">newest posts</span>
-        </Link>
+        </PageLink>
       )}
     {!isFirstPage && (
-      <Link to={`${linkBase}${currentPage - 1 === 1 ? '' : currentPage - 1}`}>
+      <PageLink
+        to={`${linkBase}${currentPage - 1 === 1 ? '' : currentPage - 1}`}
+        className={moveLeft}
+      >
         ‹ newer posts
-      </Link>
+      </PageLink>
     )}
     {!isLastPage && (
-      <Link to={`${linkBase}${currentPage + 1}`}>older posts ›</Link>
+      <PageLink to={`${linkBase}${currentPage + 1}`} className={moveRight}>
+        older posts ›
+      </PageLink>
     )}
     {!isLastPage &&
       currentPage !== totalPages - 1 && (
-        <Link to={`${linkBase}${totalPages}`} title="jump to oldest posts">
+        <PageLink to={`${linkBase}${totalPages}`} title="jump to oldest posts">
           <span className="screen-reader-text">oldest posts</span> »
-        </Link>
+        </PageLink>
       )}
-  </div>
+  </Wrapper>
 );
 
 Pagination.propTypes = {
