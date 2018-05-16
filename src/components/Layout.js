@@ -17,27 +17,29 @@ import PageTransition from './PageTransition';
 
 // Add custom fonts.
 addFonts();
+reset();
+typography();
 
 // Set up global styles for the app.
 const Wrapper = styled('div')`
   color: ${color.textDefault};
   font-family: ${font.default};
   font-size: ${sizing.default};
+  font-weight: 300;
   line-height: ${font.lineHeight};
   margin: 0 auto;
-  min-height: 80vh;
+  min-height: 50vh;
   position: relative;
   text-decoration-skip: ink;
+
+  strong,
+  b {
+    font-weight: 500;
+  }
 
   @media (min-width: 480px) {
     font-size: ${sizing.large};
   }
-
-  /* Apply a minimal reset to all elements within the wrapper. */
-  ${reset}
-
-  /* Add basic typography rules for everything inside the wrapper. */
-  ${typography};
 `;
 
 export default ({ children, location }) => [

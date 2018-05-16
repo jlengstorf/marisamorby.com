@@ -46,6 +46,10 @@ const NavLink = styled(Link)`
     transition: all 200ms ease-out;
     width: 1.5em;
     z-index: -1;
+
+    @media (min-width: 800px) {
+      height: 1.125rem;
+    }
   }
 
   &:active,

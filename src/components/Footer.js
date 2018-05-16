@@ -14,6 +14,10 @@ const Wrapper = styled('footer')`
   padding: 1.5rem 0 1rem;
   position: relative;
 
+  @media (min-width: 800px) {
+    margin-top: 8rem;
+  }
+
   &::before,
   &::after {
     content: ' ';
