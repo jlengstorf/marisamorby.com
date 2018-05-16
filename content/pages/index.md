@@ -11,4 +11,4 @@ By combining the stories from real people with the larger trends gathered by ana
 
 Whether you’re developing a brand new product from scratch or optimizing conversion in your existing funnel, **I provide battle-tested strategies for minimizing risk and overhead while maximizing your revenue.**
 
-<a href="/contact" class="btn">Work With Me</a>
+<a href="/contact" class="button">Work With Me</a>
