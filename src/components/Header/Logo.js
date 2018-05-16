@@ -39,6 +39,7 @@ const LogoWrap = styled('h4')`
 
 const LogoLink = styled(Link)`
   color: inherit;
+  display: inline-block;
   padding: 0;
   text-decoration: none;
 
