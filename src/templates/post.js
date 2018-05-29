@@ -1,23 +1,29 @@
 /* eslint react/no-danger: "off" */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from '../components/Layout';
-import Heading from '../components/Heading';
-import MainImage from '../components/MainImage';
-import Content from '../components/Content';
-import SEO from '../components/SEO';
+import Layout from '../components/shared/Layout';
+import Section from '../components/shared/Section';
+import Heading from '../components/shared/Heading';
+import MainImage from '../components/shared/MainImage';
+import SEO from '../components/SEO/SEO';
 
 const Post = ({ data: { post }, location }) => (
   <Layout location={location}>
-    <SEO data={post} article />
-    <Heading text={post.frontmatter.title} />
-    <MainImage
-      sizes={post.frontmatter.image.childImageSharp.sizes}
-      alt={post.frontmatter.title}
+    <SEO
+      title={post.frontmatter.title}
+      description={post.frontmatter.description || post.excerpt || 'nothin’'}
+      image={post.frontmatter.image.childImageSharp.sizes.src}
+      pathname={post.fields.slug}
+      article
     />
-    <Content>
+    <Section>
+      <Heading text={post.frontmatter.title} />
+      <MainImage
+        sizes={post.frontmatter.image.childImageSharp.sizes}
+        alt={post.frontmatter.title}
+      />
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </Content>
+    </Section>
   </Layout>
 );
 
@@ -26,11 +32,13 @@ Post.propTypes = {
     post: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        description: PropTypes.string,
       }).isRequired,
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
       }),
       html: PropTypes.string.isRequired,
+      excerpt: PropTypes.string,
     }).isRequired,
   }).isRequired,
 };
@@ -44,9 +52,11 @@ export const query = graphql`
   ) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt
       frontmatter {
         datePublished: date(formatString: "YYYY-MM-DDTHH:mm:ssZ")
         title
+        description
         image {
           childImageSharp {
             sizes(

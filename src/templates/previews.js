@@ -1,24 +1,11 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from '../components/Layout';
-import Heading from '../components/Heading';
-import Content from '../components/Content';
-import Preview from '../components/Preview';
-import Pagination from '../components/Pagination';
-import { categories } from '../config';
-
-const getHeading = (isFirstPage, currentPage, totalPages, type, value) => {
-  if (type === 'category' && value) {
-    return `Articles in the category “${categories[value] || value}”`;
-  }
-
-  if (type === 'all' && isFirstPage) {
-    return 'Latest Articles';
-  }
-
-  return `Articles, page ${currentPage} of ${totalPages}`;
-};
+import Layout from '../components/shared/Layout';
+import Section from '../components/shared/Section';
+import Preview from '../components/Blog/Preview';
+import PreviewHeading from '../components/Blog/PreviewHeading';
+import Pagination from '../components/Blog/Pagination';
 
 const Previews = ({
   data,
@@ -35,10 +22,14 @@ const Previews = ({
   location,
 }) => (
   <Layout location={location}>
-    <Heading
-      text={getHeading(isFirstPage, currentPage, totalPages, type, value)}
-    />
-    <Content>
+    <Section>
+      <PreviewHeading
+        isFirstPage={isFirstPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        type={type}
+        value={value}
+      />
       {isFirstPage &&
         type === 'all' && (
           <section dangerouslySetInnerHTML={{ __html: data.intro.html }} />
@@ -52,7 +43,7 @@ const Previews = ({
         totalPages={totalPages}
         linkBase={linkBase}
       />
-    </Content>
+    </Section>
   </Layout>
 );
 

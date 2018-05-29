@@ -1,30 +1,33 @@
 /* eslint react/no-danger: "off" */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Heading from '../components/Heading';
-import MainImage from '../components/MainImage';
-import Content from '../components/Content';
-import ContactForm from '../components/ContactForm';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
+import Heading from '../components/shared/Heading';
+import MainImage from '../components/shared/MainImage';
+import Layout from '../components/shared/Layout';
+import Section from '../components/shared/Section';
+import SEO from '../components/SEO/SEO';
 
 const Page = ({ data: { page }, location }) => {
-  const pageContent = [
-    <div key="page-content" dangerouslySetInnerHTML={{ __html: page.html }} />,
-    location.pathname === '/contact/' && (
-      <ContactForm key="contact-form" action="/thanks/" />
-    ),
-  ];
+  const image = page.frontmatter.image;
 
   return (
     <Layout location={location}>
-      <SEO data={page} />
-      <Heading text={page.frontmatter.title} />
-      <MainImage
-        sizes={page.frontmatter.image.childImageSharp.sizes}
-        alt={page.frontmatter.title}
+      <SEO
+        title={page.frontmatter.title}
+        description={page.frontmatter.description || page.excerpt}
+        image={image && image.childImageSharp.sizes.src}
+        pathname={location.pathname}
       />
-      <Content>{pageContent}</Content>
+      <Section>
+        <Heading text={page.frontmatter.title} />
+        {image && (
+          <MainImage
+            sizes={image.childImageSharp.sizes}
+            alt={page.frontmatter.title}
+          />
+        )}
+        <div dangerouslySetInnerHTML={{ __html: page.html }} />
+      </Section>
     </Layout>
   );
 };
@@ -52,8 +55,11 @@ export const query = graphql`
   ) {
     page: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt
       frontmatter {
         title
+        description
+        slug
         image {
           childImageSharp {
             sizes(
