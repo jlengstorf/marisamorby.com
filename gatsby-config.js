@@ -11,8 +11,6 @@ module.exports = {
     twitterUsername: '@marisamorby',
     facebookAppID: '',
     nav: [
-      { path: '/', name: 'Home', hidden: true },
-      // { path: '/podcast/', name: 'Podcast' },
       { path: 'https://medium.com/@marisamorby', name: 'Blog', hidden: true },
       { path: '/#about', name: 'About' },
       { path: '/#process', name: 'Process' },
