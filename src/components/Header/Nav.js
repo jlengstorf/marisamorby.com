@@ -1,86 +1,108 @@
 import React from 'react';
-import styled from 'react-emotion';
-import { Link } from 'gatsby';
-import { color, font } from '../../utils/style';
-import { nav } from '../../config';
+import styled, { css } from 'react-emotion';
+import { Link, StaticQuery } from 'gatsby';
+import Context from '../../utils/context';
+import scrollToAnchor from '../../utils/scroll-to-anchor';
+import { font } from '../../utils/style';
 
-const Wrapper = styled('nav')`
-  font-family: ${font.default};
-  grid-column: 1 / span 2;
-  margin-left: auto;
-  margin-top: 0;
-  position: relative;
-  text-align: right;
-  z-index: 1;
-
-  @media (min-width: 480px) {
-    grid-column: 3 / 4;
-    z-index: 10;
-  }
-`;
-
-const NavLink = styled(Link)`
-  color: ${color.darkest};
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.125em;
-  line-height: 1;
+const Nav = styled('nav')`
+  font-family: ${font.heading};
+  font-size: 1.125rem;
+  font-weight: ${font.headingWeight};
   margin: 0;
-  padding: 0.125rem 0.5rem 0.25rem;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color 200ms ease-out;
-  z-index: 10;
-
-  &::after {
-    background-color: ${color.accentDark};
-    border-radius: 0.75em;
-    content: ' ';
-    height: 1.45em;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: all 200ms ease-out;
-    width: 1.5em;
-    z-index: -1;
-
-    @media (min-width: 800px) {
-      height: 1.125rem;
-    }
-  }
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: ${color.lightest};
-    outline: none;
-    text-decoration: none;
-
-    &::after {
-      opacity: 1;
-      text-decoration: none;
-      width: 100%;
-    }
-  }
 
   @media (min-width: 480px) {
-    color: ${color.lightest};
-    display: block;
-    font-size: 14px;
-    letter-spacing: 0.25em;
-    margin: 0.375rem 0;
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
-export default () => (
-  <Wrapper>
-    {nav.filter(link => !link.hidden).map(link => (
-      <NavLink key={`nav-${link.name}`} to={link.path}>
-        {link.name}
-      </NavLink>
-    ))}
-  </Wrapper>
+const linkStyles = css`
+  margin: 0 0.5rem;
+
+  @media (min-width: 480px) {
+    margin: 0 0.25rem;
+
+    &:last-child {
+      margin-right: -0.125rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin: 0 0.5rem;
+  }
+`;
+
+const onClickHandler = (path, refMap, updateCurrentSection) => {
+  const targetID = path.replace('/#', '');
+  const target = refMap[targetID] || false;
+
+  return target
+    ? scrollToAnchor(target, () => {
+        updateCurrentSection(targetID);
+      })
+    : () => {};
+};
+
+const getLink = (
+  isHome,
+  linkClass,
+  currentSection,
+  refMap,
+  updateCurrentSection,
+) => link => {
+  const Component = isHome ? 'a' : Link;
+  const isActive = currentSection === link.path.replace('/#', '');
+  const attrs = {
+    key: `nav-${link.name}`,
+    className: `${linkStyles} ${linkClass} ${isActive && 'active'}`,
+    [isHome ? 'href' : 'to']: link.path,
+    onClick: onClickHandler(link.path, refMap, updateCurrentSection),
+  };
+
+  return <Component {...attrs}>{link.name}</Component>;
+};
+
+export default ({ linkClass, isHome }) => (
+  <StaticQuery
+    query={graphql`
+      query HeaderQuery {
+        site {
+          siteMetadata {
+            nav {
+              path
+              name
+              hidden
+            }
+          }
+        }
+      }
+    `}
+    render={({
+      site: {
+        siteMetadata: { nav },
+      },
+    }) => (
+      <Context.Consumer>
+        {({ currentSection, refMap, updateCurrentSection }) => (
+          <Nav>
+            {nav
+              .filter(link => !link.hidden)
+              .map(
+                getLink(
+                  isHome,
+                  linkClass,
+                  currentSection,
+                  refMap,
+                  updateCurrentSection,
+                ),
+              )}
+          </Nav>
+        )}
+      </Context.Consumer>
+    )}
+  />
 );

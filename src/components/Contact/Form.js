@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import Button from '../components/Button';
-import { color, transition } from '../utils/style';
+import Button from '../shared/Button';
+import { color, transition } from '../../utils/style';
 
 const inputStyle = css`
-  border: 2px solid ${color.accent};
-  border-radius: 0.25rem;
+  background-color: ${color.accentLight};
+  border: 0;
+  border-bottom: 2px solid ${color.textDefault}22;
   display: block;
   font-size: 16px;
   margin-top: 0.25rem;
@@ -14,7 +15,7 @@ const inputStyle = css`
   transition: ${transition.duration} border-color ${transition.easing};
 
   &:focus {
-    border-color: ${color.accentDark};
+    border-color: ${color.accent};
     outline: 0;
   }
 `;
@@ -35,8 +36,8 @@ const Label = styled('label')`
 `;
 
 const Input = styled('input')`
-  ${inputStyle} max-width: 300px;
-  width: 100%;
+  ${inputStyle} max-width: 400px;
+  width: 90vw;
 `;
 
 const Textarea = styled('textarea')`

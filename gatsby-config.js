@@ -1,4 +1,31 @@
+require('dotenv').config();
+
 module.exports = {
+  siteMetadata: {
+    title: 'Marisa Morby · Transformation Designer and UX Researcher',
+    titleTemplate: '%s · Marisa Morby',
+    description: '',
+    url: 'https://marisamorby.com', // no trailing slash!
+    image: '/images/marisa-morby.jpg',
+    owner: 'Marisa Morby',
+    twitterUsername: '@marisamorby',
+    facebookAppID: '',
+    nav: [
+      { path: '/', name: 'Home', hidden: true },
+      // { path: '/podcast/', name: 'Podcast' },
+      { path: 'https://medium.com/@marisamorby', name: 'Blog', hidden: true },
+      { path: '/#about', name: 'About' },
+      { path: '/#process', name: 'Process' },
+      { path: '/#speaking', name: 'Speaking' },
+      { path: '/#contact', name: 'Contact' },
+    ],
+    categories: [
+      { slug: 'confidence', name: 'Confidence' },
+      { slug: 'better-humans', name: 'Better Humans' },
+      { slug: 'business-basics', name: 'Business Basics' },
+      { slug: 'uncomfortable-things', name: 'Uncomfortable Things' },
+    ],
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-twitter',
@@ -18,6 +45,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
+              backgroundColor: '#faf6fa',
               maxWidth: 1380,
               linkImagesToOriginal: false,
             },
@@ -29,6 +57,16 @@ module.exports = {
           'gatsby-remark-smartypants',
           'gatsby-remark-numbered-footnotes',
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-airtable',
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY,
+        baseId: `appEToRRhrPEVkmU2`,
+        tableName: `Speaking Engagements`,
+        tableView: `Grid view`,
+        queryName: `SpeakingEngagements`,
       },
     },
   ],

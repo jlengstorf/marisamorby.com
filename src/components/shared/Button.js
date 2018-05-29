@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
-import { button } from '../utils/style';
+import { button } from '../../utils/style';
 
 const Btn = ({ to, children, ...props }) =>
   /^\/(?!\/)/.test(to) ? (

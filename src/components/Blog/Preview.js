@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
 import CategoryLink from './CategoryLink';
-import { color } from '../utils/style';
+import { color } from '../../utils/style';
 
 const Wrapper = styled('section')`
   border-bottom: 1px solid ${color.textLight}22;
@@ -11,8 +11,9 @@ const Wrapper = styled('section')`
 `;
 
 const Heading = styled('h2')`
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  && {
+    font-size: 1.5rem;
+  }
 
   @media (min-width: 480px) {
     font-size: 2rem;
@@ -21,7 +22,8 @@ const Heading = styled('h2')`
   a {
     color: inherit;
     display: block;
-    padding: 0;
+    margin-left: -0.25rem;
+    padding: 0.25rem;
     position: relative;
     text-decoration: none;
     z-index: 10;
@@ -29,26 +31,14 @@ const Heading = styled('h2')`
     &:active,
     &:focus,
     &:hover {
-      outline: none;
-
-      &::after {
-        background: ${color.accent};
-        bottom: -0.5rem;
-        clip-path: polygon(0 7%, 100% 0%, 99% 100%, 1% 79%);
-        content: ' ';
-        height: 100%;
-        left: -0.5rem;
-        opacity: 0.25;
-        position: absolute;
-        right: -0.5rem;
-        z-index: -1;
-      }
+      outline: 2px solid ${color.accent};
     }
   }
 `;
 
 const Excerpt = styled('p')`
   font-size: 1rem;
+  margin-top: 0.5rem;
 `;
 
 const ReadMoreLink = styled(Link)`

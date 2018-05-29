@@ -23,17 +23,20 @@ export const addFonts = () =>
 const colorDarkest = '#2b4b54';
 
 export const color = {
-  lightest: '#fff',
+  lightest: '#ffffff',
   darkest: colorDarkest,
-  accent: '#39bbdf',
-  accentDark: '#1791b3',
+  accent: '#a330f6',
+  accentLight: '#faf6fa',
+  accentDark: '#470476',
   textDefault: colorDarkest,
   textLight: '#627980',
 };
 
 export const sizing = {
-  default: '18px',
-  large: '21px',
+  default: '16px',
+  large: '18px',
+  maxWidth: '540px',
+  width: '90vw',
 };
 
 export const font = {
@@ -48,17 +51,15 @@ export const font = {
     '"Helvetica Neue"',
     'sans-serif',
   ].join(),
-  heading: 'eveleth',
-  headingShadow: 'eveleth-shadow',
+  heading: 'Brandon Grotesque',
+  headingWeight: 100,
   lineHeight: 1.45,
 };
 
 export const button = css`
   display: block;
   background: ${color.accent};
-  border: 2px solid ${color.lightest};
   border-radius: 0.5rem;
-  box-shadow: 2px 2px ${color.accentDark};
   color: ${color.lightest};
   font-family: ${font.heading};
   font-size: 1.25rem;
@@ -69,7 +70,6 @@ export const button = css`
   position: relative;
   text-align: center;
   text-decoration: none;
-  text-shadow: 1px 2px 1px ${color.accentDark};
   width: 300px;
 
   span {
@@ -176,6 +176,7 @@ export const reset = () =>
     *::after {
       box-sizing: border-box;
       margin: 0;
+      text-rendering: optimizeLegibility;
     }
 
     * + * {
@@ -208,28 +209,30 @@ export const typography = () =>
     h6 {
       color: ${color.darkest};
       font-family: ${font.heading};
-      font-weight: normal;
-      line-height: 1;
-      position: relative;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: antialiased;
-
-      /* Super-sweet multi-colored shadow effect! */
-      &::after {
-        color: ${color.accentDark};
-        content: attr(data-text);
-        font-family: ${font.headingShadow};
-        left: 0;
-        pointer-events: none;
-        position: absolute;
-        top: 0.12em;
-      }
+      font-weight: ${font.headingWeight};
+      line-height: 1.1;
 
       em,
       i,
       strong,
       b {
-        font-weight: normal;
+        font-weight: inherit;
+      }
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: ${color.text};
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      margin: 2.5rem 0 0;
+      text-transform: uppercase;
+
+      + * {
+        margin-top: 0.5rem;
       }
     }
 
@@ -241,6 +244,24 @@ export const typography = () =>
       &:focus {
         outline: 2px solid ${color.accent};
       }
+    }
+
+    li {
+      margin-top: 0.5rem;
+    }
+
+    blockquote {
+      color: ${color.textLight};
+      font-style: italic;
+
+      > :last-child {
+        font-size: 87.5%;
+        text-align: right;
+      }
+    }
+
+    .button {
+      ${button}
     }
 
     .screen-reader-text {

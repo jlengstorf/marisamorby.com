@@ -14,11 +14,6 @@ const Wrapper = styled('div')`
   padding-bottom: calc(300px - 2rem);
   position: relative;
   width: calc(300px - 2rem);
-
-  @media (min-width: 800px) {
-    grid-column: 1 / span 2;
-    margin-right: 2rem;
-  }
 `;
 
 const Image = styled(Img)`
@@ -27,7 +22,7 @@ const Image = styled(Img)`
   position: relative;
   z-index: 1;
 
-  & img {
+  img {
     margin-top: 0;
   }
 `;

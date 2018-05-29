@@ -15,10 +15,6 @@ const H1 = styled('h1')`
       padding-right: 4rem;
     }
   }
-
-  @media (min-width: 800px) {
-    grid-column: 2 / span 3;
-  }
 `;
 
 const Heading = ({ text, ...props }) => (

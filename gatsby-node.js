@@ -181,13 +181,11 @@ exports.createPages = ({ graphql, actions: { createPage, createRedirect } }) =>
         });
 
         result.data.pages.edges.forEach(({ node: page }) => {
-          // We manually create these pages, so skip them here.
-          if (['/articles/'].includes(page.fields.slug)) {
-            return;
-          }
-
-          // Also bail if this post is a draft
-          if (page.frontmatter.draft === true) {
+          // Bail if this post is a draft
+          if (
+            process.env.NODE_ENV === 'production' &&
+            page.frontmatter.draft === true
+          ) {
             return;
           }
 
@@ -196,14 +194,18 @@ exports.createPages = ({ graphql, actions: { createPage, createRedirect } }) =>
             ? 'post'
             : 'page';
 
+          if (type === 'page' && !['/index/', '/thanks/'].includes(realPath)) {
+            return;
+          }
+
           createPage({
             path: realPath !== '/index/' ? realPath : '/',
             component: templates[type],
             context: {
               slug: page.fields.slug,
-              tracedSVGColor: '#d3f5fe',
+              tracedSVGColor: '#faf6fa',
               duotoneHighlight: '#ffffff',
-              duotoneShadow: '#39bbdf',
+              duotoneShadow: '#a330f6',
             },
           });
         });
