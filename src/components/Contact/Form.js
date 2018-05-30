@@ -61,18 +61,18 @@ const ContactForm = ({ action, name }) => (
     data-netlify="true"
   >
     <HoneyPot>
-      <Label for="full-name">
+      <Label htmlFor="full-name">
         Don’t fill out this field if you’re a human.
       </Label>
       <Input type="text" id="full-name" name="full-name" />
     </HoneyPot>
-    <Label for="fname">Name</Label>
+    <Label htmlFor="fname">Name</Label>
     <Input type="text" id="fname" name="name" required />
-    <Label for="email">Email</Label>
+    <Label htmlFor="email">Email</Label>
     <Input type="email" id="email" name="email" required />
-    <Label for="phone">Phone Number</Label>
+    <Label htmlFor="phone">Phone Number</Label>
     <Input type="tel" id="phone" name="phone" required />
-    <Label for="message">Message</Label>
+    <Label htmlFor="message">Message</Label>
     <Textarea id="message" name="message" required />
     <Submit type="submit">
       <span>Send Message</span>
