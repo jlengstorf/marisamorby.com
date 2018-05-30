@@ -6,7 +6,7 @@ import { color, font } from '../../utils/style';
 
 const Footer = styled('footer')`
   background-color: ${color.accentLight};
-  color: ${color.textLight};
+  color: ${color.textDefault};
   font-family: ${font.default};
   font-size: 11px;
   margin-top: 4rem;
