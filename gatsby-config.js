@@ -4,7 +4,8 @@ module.exports = {
   siteMetadata: {
     title: 'Marisa Morby · Transformation Designer and UX Researcher',
     titleTemplate: '%s · Marisa Morby',
-    description: '',
+    description:
+      'Marisa Morby is a product manager, user experience researching, designer, and strategist living in Portland, OR.',
     url: 'https://marisamorby.com', // no trailing slash!
     image: '/images/marisa-morby.jpg',
     owner: 'Marisa Morby',
@@ -67,5 +68,6 @@ module.exports = {
         queryName: `SpeakingEngagements`,
       },
     },
+    'gatsby-plugin-offline',
   ],
 };
