@@ -1,25 +1,6 @@
 import { injectGlobal } from 'emotion';
 import { css } from 'react-emotion';
 
-export const addFonts = () =>
-  injectGlobal`
-    @font-face {
-      font-family: eveleth;
-      font-display: swap;
-      font-style: normal;
-      font-weight: normal;
-      src: url('/fonts/edbwf.woff') format('woff');
-    }
-
-    @font-face {
-      font-family: eveleth-shadow;
-      font-display: swap;
-      font-style: normal;
-      font-weight: normal;
-      src: url('/fonts/eswf.woff') format('woff');
-    }
-  `;
-
 const colorDarkest = '#2b4b54';
 
 export const color = {
@@ -51,7 +32,7 @@ export const font = {
     '"Helvetica Neue"',
     'sans-serif',
   ].join(),
-  heading: 'Brandon Grotesque',
+  heading: 'brandon-grotesque',
   headingWeight: 100,
   lineHeight: 1.45,
 };
@@ -226,7 +207,7 @@ export const typography = () =>
     h6 {
       color: ${color.text};
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.2em;
       margin: 2.5rem 0 0;
       text-transform: uppercase;
@@ -274,7 +255,6 @@ export const typography = () =>
   `;
 
 export default {
-  addFonts,
   button,
   color,
   sizing,
