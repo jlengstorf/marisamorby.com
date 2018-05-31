@@ -70,9 +70,6 @@ export const query = graphql`
             ) {
               ...GatsbyImageSharpSizes_tracedSVG
             }
-            resolutions {
-              src
-            }
           }
         }
       }
