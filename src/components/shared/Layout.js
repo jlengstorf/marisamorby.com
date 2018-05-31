@@ -45,13 +45,18 @@ export default ({ children, location }) => [
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#39bbdf" />
     <meta name="msapplication-TileColor" content="#39bbdf" />
     <meta name="theme-color" content="#39bbdf" />
-
-    {/* Fonts */}
-    <link rel="stylesheet" href="https://use.typekit.net/axw8srx.css" />
   </Helmet>,
   <Header key="app-header" location={location} />,
   <MainContent key="app-content">
     <PageTransition location={location}>{children}</PageTransition>
   </MainContent>,
   <Footer key="app-footer" />,
+  <script
+    key="typekit-fonts"
+    dangerouslySetInnerHTML={{
+      __html: `
+        console.log('hello?');
+      `,
+    }}
+  />,
 ];
