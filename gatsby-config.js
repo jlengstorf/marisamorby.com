@@ -1,3 +1,4 @@
+require('regenerator-runtime/runtime');
 require('dotenv').config();
 
 module.exports = {
