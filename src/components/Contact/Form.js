@@ -57,7 +57,7 @@ const ContactForm = ({ action, name }) => (
     name="contact"
     method="POST"
     action={action}
-    netlify-honeypot="full-name"
+    data-netlify-honeypot="full-name"
     data-netlify="true"
   >
     <HoneyPot>
