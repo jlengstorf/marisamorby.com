@@ -21,7 +21,7 @@ module.exports = {
 ## Options
 
 option        | default                                  | description
-------------- | ---------------------------------------- | -----------
+------------- | ---------------------------------------- | -----------------------------------------
 projectId     |                                          | the Sanity project ID from Sanity Studio
 dataset       |                                          | the Sanity dataset (usually "production" by default)
 token         |                                          | a Sanity read token (see your [API settings](https://manage.sanity.io))
@@ -38,28 +38,15 @@ module.exports = {
     {
       resolve: 'gatsby-theme-blog-sanity',
       options: {
-        projectId: 'xxx',
-        dataset: 'production',
-        token: 'xxx',
-        watchMode: true,
-        overlayDrafts: false,
+        sanity: {
+          projectId: 'xxx',
+          dataset: 'production',
+          token: 'xxx',
+          watchMode: true,
+          overlayDrafts: false,
+        }
       }
     }
   ]
 }
 ```
-
-### How to set options via environment variables
-
-Create a `.env.development` in your Gatsby site root (next to `gatsby-config.js`) and add the following:
-
-```env
-# find these values at https://manage.sanity.io/
-SANITY_PROJECT_ID=<sanity_project_id>
-SANITY_DATASET=<sanity_dataset>
-SANITY_READ_TOKEN=<sanity_read_token>
-```
-
-The theme is configured to look for these environment variables. **Important: options set in `gatsby-config.js` will override environment variables.**
-
-**NOTE:** `watchMode` and `overlayDrafts` cannot be set via environment variables.
