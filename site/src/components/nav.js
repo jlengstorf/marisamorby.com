@@ -5,7 +5,7 @@ import useLocation from '../hooks/use-location';
 const Nav = ({ navLinks }) => {
   const { location } = useLocation();
   const [currentSection, setCurrentSection] = useState(
-    location.hash.replace('#', ''),
+    location.hash ? location.hash.replace('#', '') : '',
   );
 
   const handleClick = event => {

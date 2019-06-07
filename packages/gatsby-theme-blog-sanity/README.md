@@ -55,8 +55,8 @@ Create a `.env.development` in your Gatsby site root (next to `gatsby-config.js`
 
 ```env
 # find these values at https://manage.sanity.io/
-GATSBY_SANITY_PROJECT_ID=<sanity_project_id>
-GATSBY_SANITY_DATASET=<sanity_dataset>
+SANITY_PROJECT_ID=<sanity_project_id>
+SANITY_DATASET=<sanity_dataset>
 SANITY_READ_TOKEN=<sanity_read_token>
 ```
 

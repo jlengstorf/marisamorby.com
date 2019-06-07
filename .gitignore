@@ -63,3 +63,6 @@ typings/
 .cache/
 public
 yarn-error.log
+
+# Netlify stuff that I don’t think we need
+.netlify
