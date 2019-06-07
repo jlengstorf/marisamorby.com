@@ -26,6 +26,7 @@
     "gatsby-remark-images": "^3.0.14",
     "gatsby-source-airtable": "^2.0.8",
     "gatsby-source-filesystem": "^2.0.38",
+    "gatsby-theme-blog-sanity": "^1.0.0",
     "gatsby-transformer-sharp": "^2.1.21",
     "get-youtube-id": "^1.0.1",
     "intersection-observer": "^0.7.0",
