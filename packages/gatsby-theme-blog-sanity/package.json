@@ -1,0 +1,22 @@
+{
+  "name": "gatsby-theme-blog-sanity",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "^2.7.1",
+    "gatsby-image": "^2.1.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@sanity/block-content-to-react": "^2.0.6",
+    "dotenv": "^8.0.0",
+    "gatsby-plugin-emotion": "^4.0.7",
+    "gatsby-source-sanity": "^4.0.1",
+    "lodash": "^4.17.11",
+    "lodash.chunk": "^4.2.0",
+    "lodash.template": "^4.4.0"
+  }
+}
