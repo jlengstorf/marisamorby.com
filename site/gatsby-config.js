@@ -6,7 +6,7 @@ module.exports = {
     titleTemplate: '%s · Marisa Morby',
     description:
       'Marisa Morby is a product manager, user experience researcher, designer, and strategist living in Portland, OR.',
-    url: 'https://marisamorby.com', // no trailing slash!
+    baseUrl: 'https://marisamorby.com', // no trailing slash!
     image: '/images/marisa-morby.jpg',
     owner: 'Marisa Morby',
     twitterUsername: '@marisamorby',
