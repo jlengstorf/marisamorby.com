@@ -42,7 +42,7 @@ export const query = graphql`
 
 const PostTemplate = ({ data, pageContext }) => {
   const post = {
-    path: pageContext.path,
+    path: pageContext.postPath,
     title: data.post.title,
     description: data.post.description,
     content: data.post._rawBody,
