@@ -5,8 +5,8 @@ module.exports = ({ sanity = {} }) => ({
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: sanity.projectId || process.env.SANITY_PROJECT_ID,
-        dataset: sanity.dataset || process.env.SANITY_DATASET,
+        projectId: sanity.projectId || process.env.GATSBY_SANITY_PROJECT_ID,
+        dataset: sanity.dataset || process.env.GATSBY_SANITY_DATASET,
         token: sanity.token || process.env.SANITY_READ_TOKEN,
         watchMode: sanity.watchMode || !isProd,
         overlayDrafts: sanity.overlayDrafts || !isProd,
