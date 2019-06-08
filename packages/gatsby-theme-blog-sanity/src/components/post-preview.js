@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import PortableText from './portable-text';
 
 const PostPreview = ({ post, ...props }) => (
   <article {...props}>
@@ -12,7 +11,7 @@ const PostPreview = ({ post, ...props }) => (
       <h2>
         <Link to={post.path}>{post.title}</Link>
       </h2>
-      {post.excerpt && <PortableText blocks={post.excerpt} />}
+      <p>{post.description}</p>
       <Link to={post.path} className="read-link">
         Read this post &rsaquo;
       </Link>

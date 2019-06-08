@@ -7,7 +7,7 @@ const PostPreviewsTemplate = ({ pageContext }) => {
   const posts = pageContext.group.map(p => ({
     id: p.id,
     title: p.title,
-    excerpt: p.excerpt,
+    description: p.description,
     image: p.mainImage.asset.fixed,
     path: p.path,
   }));
