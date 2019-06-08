@@ -8,12 +8,12 @@ import { colors } from '../tokens';
 const Figure = ({ node }) => {
   const fluid = getFluidGatsbyImage(
     node.asset._id,
-    { maxWidth: 675 },
+    { maxWidth: 540 },
     ...sanityConfig,
   );
 
   // only use Gatsby images for JPG/PNG images
-  const image = node.asset.extension.match('/(jpe?g|png)/') ? (
+  const image = node.asset.extension.match(/(jpe?g|png)/) ? (
     <GatsbyImage fluid={fluid} alt={node.alt} />
   ) : (
     <img src={node.asset.url} alt={node.alt} />
