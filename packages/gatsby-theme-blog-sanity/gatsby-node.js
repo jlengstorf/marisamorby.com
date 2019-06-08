@@ -11,7 +11,7 @@ exports.createPages = async ({ graphql, actions, reporter }, options) => {
         nodes {
           id
           title
-          excerpt: _rawExcerpt
+          description
           slug {
             current
           }
