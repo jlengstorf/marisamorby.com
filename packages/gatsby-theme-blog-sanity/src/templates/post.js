@@ -8,6 +8,7 @@ export const query = graphql`
     post: sanityPost(id: { eq: $id }) {
       title
       publishedAt
+      description
       categories {
         _key
         title
@@ -32,16 +33,31 @@ export const query = graphql`
             }
           }
           name
+          twitter
         }
       }
     }
   }
 `;
 
-const PostTemplate = ({ data }) => (
-  <Layout>
-    <Post post={data.post} />
-  </Layout>
-);
+const PostTemplate = ({ data, pageContext }) => {
+  const post = {
+    path: pageContext.path,
+    title: data.post.title,
+    description: data.post.description,
+    content: data.post._rawBody,
+    image: data.post.mainImage,
+    // XXX this doesn’t support multiple authors
+    author: data.post.authors[0].author,
+    categories: data.post.categories.map(cat => cat.title),
+    date: new Date(data.post.publishedAt),
+  };
+
+  return (
+    <Layout>
+      <Post post={post} />
+    </Layout>
+  );
+};
 
 export default PostTemplate;
