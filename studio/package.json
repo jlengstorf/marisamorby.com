@@ -13,14 +13,15 @@
     "test": "sanity check"
   },
   "dependencies": {
-    "@sanity/base": "^0.140.34",
-    "@sanity/cli": "^0.140.34",
-    "@sanity/components": "^0.140.34",
-    "@sanity/core": "^0.140.34",
-    "@sanity/dashboard": "^0.140.34",
-    "@sanity/default-layout": "^0.140.34",
-    "@sanity/default-login": "^0.140.34",
-    "@sanity/desk-tool": "^0.140.34",
+    "@jlengstorf/react-tweet-embed": "^0.0.4",
+    "@sanity/base": "^0.141.6",
+    "@sanity/cli": "^0.141.6",
+    "@sanity/components": "^0.141.6",
+    "@sanity/core": "^0.141.6",
+    "@sanity/dashboard": "^0.141.6",
+    "@sanity/default-layout": "^0.141.6",
+    "@sanity/default-login": "^0.141.5",
+    "@sanity/desk-tool": "^0.141.6",
     "date-fns": "^1.30.1",
     "get-youtube-id": "^1.0.1",
     "prop-types": "^15.7.2",
@@ -32,14 +33,14 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-config-standard-react": "^7.0.2",
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-config-standard-react": "^8.0.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-standard": "^4.0.0",
-    "prettier-eslint-cli": "^4.7.1"
+    "prettier-eslint-cli": "^5.0.0"
   }
 }

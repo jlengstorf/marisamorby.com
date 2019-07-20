@@ -1,8 +1,8 @@
 import React from 'react'
-import {BlockEditor} from 'part:@sanity/form-builder'
+import { BlockEditor } from 'part:@sanity/form-builder'
 
 export default class CustomEditor extends React.PureComponent {
-  render () {
+  render() {
     return (
       <div>
         <BlockEditor {...this.props} onPaste={handlePaste} />
@@ -11,11 +11,12 @@ export default class CustomEditor extends React.PureComponent {
   }
 }
 
-function handlePaste (input) {
-  const {event, path} = input
+function handlePaste(input) {
+  const { event, path } = input
   const text = event.clipboardData.getData('text/plain')
   // const json = event.clipboardData.getData('application/json')
   const youTube = text.match(/^(https?:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/)
+  const twitter = text.match(/^(https?:\/\/)?(www\.)?twitter\.com\/.+$/)
 
   if (youTube) {
     const YouTubeBlock = [
@@ -24,7 +25,19 @@ function handlePaste (input) {
         url: text
       }
     ]
-    return {insert: YouTubeBlock, path}
+
+    return { insert: YouTubeBlock, path }
+  }
+
+  if (twitter) {
+    const TwitterBlock = [
+      {
+        _type: 'twitter',
+        url: text
+      }
+    ]
+
+    return { insert: TwitterBlock, path }
   }
 
   // return undefined to let the defaults do the work
