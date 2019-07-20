@@ -1,7 +1,6 @@
-import React from 'react';
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import { Link } from 'gatsby';
-import { colors, typography } from '../tokens';
 
 const Button = ({ to, children, centered, ...props }) => {
   const isRelative = !to.startsWith('http');
@@ -10,37 +9,35 @@ const Button = ({ to, children, centered, ...props }) => {
 
   return (
     <div
-      css={css`
-        margin-top: 2rem;
-        text-align: ${centered ? 'center' : 'inherit'};
-      `}
+      sx={{
+        marginTop: 5,
+        textAlign: centered ? 'center' : 'inherit',
+      }}
     >
       <Component
-        css={css`
-          background: ${colors.brand};
-          border: 2px solid transparent;
-          border-radius: 0.5rem;
-          color: ${colors.white};
-          display: inline-block;
-          font-family: ${typography.heading.fontFamily};
-          font-size: 1rem;
-          font-weight: 700;
-          letter-spacing: 0.125rem;
-          line-height: 2;
-          max-width: 100%;
-          overflow: hidden;
-          padding: 0 1rem;
-          text-decoration: none;
-          text-transform: uppercase;
-
-          :active,
-          :hover,
-          :focus {
-            border: 2px solid ${colors.brandDark};
-            cursor: pointer;
-            outline: none;
-          }
-        `}
+        sx={{
+          backgroundColor: 'primary',
+          border: '2px solid transparent',
+          borderRadius: 10,
+          color: 'background',
+          display: 'inline-block',
+          fontFamily: 'heading',
+          fontSize: 2,
+          fontWeight: 'heading',
+          letterSpacing: '0.125em',
+          lineHeight: 2,
+          maxWidth: '100%',
+          overflow: 'hidden',
+          py: 0,
+          px: 5,
+          textDecoration: 'none',
+          textTransform: 'uppercase',
+          ':active,:hover,:focus': {
+            borderColor: 'secondary',
+            cursor: 'pointer',
+            outline: 'none',
+          },
+        }}
         {...destinationProp}
         {...props}
       >

@@ -1,39 +1,37 @@
-import React from 'react';
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import BasePost from 'gatsby-theme-blog-sanity/src/components/post';
-import { colors } from 'gatsby-theme-blog-sanity/src/tokens';
 
 const Post = ({ post }) => (
   <BasePost
-    css={css`
-      .post-meta {
-        align-items: center;
-        border-bottom: 1px solid ${colors.black}22;
-        border-top: 1px solid ${colors.black}22;
-        color: ${colors.textLight};
-        display: flex;
-        font-size: 0.875rem;
-        justify-content: center;
-        margin: 1rem 0;
-        padding: 1rem;
-
-        .gatsby-image-wrapper {
-          min-width: 40px;
-        }
-
-        img {
-          border-radius: 50%;
-        }
-
-        p {
-          margin: 0 0 0 0.75rem;
-        }
-      }
-
-      h1 {
-        text-align: center;
-      }
-    `}
+    sx={{
+      '.post-meta': {
+        alignItems: 'center',
+        borderBottom: '1px solid',
+        borderTop: '1px solid',
+        borderColor: 'grayAlpha',
+        color: 'muted',
+        display: 'flex',
+        fontSize: 2,
+        justifyContent: 'center',
+        my: 4,
+        mx: 0,
+        padding: 3,
+        '.gatsby-image-wrapper': {
+          marginRight: 4,
+          minWidth: 40,
+        },
+        img: {
+          borderRadius: '50%',
+        },
+        '> p': {
+          margin: 0,
+        },
+      },
+      h1: {
+        textAlign: 'center',
+      },
+    }}
     post={post}
   />
 );

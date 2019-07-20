@@ -8,6 +8,7 @@ module.exports = ({ baseUrl = '', image = '', sanity = {} }) => ({
     image, //
   },
   plugins: [
+    'gatsby-plugin-theme-ui',
     {
       resolve: 'gatsby-source-sanity',
       options: {

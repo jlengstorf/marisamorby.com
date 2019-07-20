@@ -1,15 +1,14 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import GatsbyImage from 'gatsby-image';
 import { getFluidGatsbyImage } from 'gatsby-source-sanity';
-import { css } from '@emotion/core';
 import sanityConfig from '../sanity/config';
-import { colors } from '../tokens';
 
 const Figure = ({ node }) => {
   const fluid = getFluidGatsbyImage(
     node.asset._id,
     { maxWidth: 540 },
-    ...sanityConfig,
+    sanityConfig,
   );
 
   // only use Gatsby images for JPG/PNG images
@@ -21,29 +20,26 @@ const Figure = ({ node }) => {
 
   return (
     <figure
-      css={css`
-        margin-bottom: 1.5rem;
-        margin-left: auto;
-        margin-right: auto;
-
-        img {
-          margin: 0;
-          width: 100%;
-        }
-      `}
+      sx={{
+        marginBottom: 4,
+        mx: 'auto',
+        img: {
+          margin: 0,
+          width: '100%',
+        },
+      }}
     >
       {image}
       {node.caption && (
         <figcaption
-          css={css`
-            color: ${colors.textLight};
-            font-size: 87.5%;
-            margin-top: 0.5rem;
-
-            a {
-              color: inherit;
-            }
-          `}
+          sx={{
+            color: 'muted',
+            fontSize: 1,
+            marginTop: 2,
+            a: {
+              color: 'muted',
+            },
+          }}
           dangerouslySetInnerHTML={{ __html: node.caption }}
         />
       )}

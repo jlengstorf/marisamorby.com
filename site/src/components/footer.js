@@ -1,43 +1,6 @@
-import React from 'react';
-import { css } from '@emotion/core';
-import { dimensions, typography, colors } from '../tokens';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-
-const footerStyles = css`
-  border-top: 1px solid ${colors.black}22;
-  color: ${colors.textLight};
-  font-size: ${typography.small.fontSize};
-  margin: 4rem auto 0;
-  padding: 1.25rem 5vw 1rem;
-  text-align: center;
-
-  a {
-    color: inherit;
-    display: inline-block;
-    margin: 0 0.25rem;
-    padding: 0.125rem;
-    text-decoration: none;
-  }
-
-  p {
-    padding: 0.125rem;
-  }
-
-  @media (min-width: 540px) {
-    display: flex;
-    justify-content: space-between;
-    padding-left: calc((100vw - ${dimensions.maxWidth}) / 2);
-    padding-right: calc((100vw - ${dimensions.maxWidth}) / 2);
-
-    > * {
-      margin-top: 0;
-    }
-
-    p {
-      margin-left: 2rem;
-    }
-  }
-`;
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -54,7 +17,40 @@ const Footer = () => {
   `);
 
   return (
-    <footer css={footerStyles}>
+    <footer
+      sx={{
+        borderTop: '1px solid',
+        borderColor: 'grayAlpha',
+        color: 'muted',
+        fontSize: 0,
+        marginBottom: 0,
+        marginTop: 6,
+        mx: 'auto',
+        paddingBottom: 4,
+        paddingTop: 5,
+        px: '5vw',
+        textAlign: 'center',
+        a: {
+          color: 'muted',
+          display: 'inline-block',
+          mx: 2,
+          my: 0,
+          padding: 1,
+          textDecoration: 'none',
+        },
+        p: {
+          padding: 1,
+        },
+        '@media (min-width: 540px)': {
+          display: 'flex',
+          justifyContent: 'space-between',
+          px: 'calc((100vw - 540px) / 2)',
+          '> *': {
+            marginTop: 0,
+          },
+        },
+      }}
+    >
       <nav>
         {data.site.siteMetadata.nav.map(link => (
           <Link key={`footerlink-${link.path}`} to={link.path}>

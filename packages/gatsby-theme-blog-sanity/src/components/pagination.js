@@ -1,34 +1,6 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import { Link } from 'gatsby';
-import { css } from '@emotion/core';
-
-const paginationStyles = css`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3rem;
-
-  a {
-    display: inline-block;
-    margin: 0 0.5rem;
-    padding: 0.25rem;
-
-    &:first-of-type {
-      margin-left: 0;
-    }
-
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-
-  .newer {
-    margin-right: auto;
-  }
-
-  .older {
-    margin-left: auto;
-  }
-`;
 
 const Pagination = ({
   isFirstPage,
@@ -38,7 +10,33 @@ const Pagination = ({
   linkBase,
   ...props
 }) => (
-  <div className="pagination" css={paginationStyles} {...props}>
+  <div
+    className="pagination"
+    sx={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginTop: 4,
+      a: {
+        display: 'inline-block',
+        my: 0,
+        mx: 2,
+        padding: 2,
+        ':first-of-type': {
+          marginLeft: 0,
+        },
+        ':last-of-type': {
+          marginRight: 0,
+        },
+        '&.newer': {
+          marginRight: 'auto',
+        },
+        '&.older': {
+          marginLeft: 'auto',
+        },
+      },
+    }}
+    {...props}
+  >
     {!isFirstPage && currentPage !== 2 && (
       <Link to={linkBase} title="jump to newest posts" className="newest">
         « <span className="screen-reader-text">newest posts</span>

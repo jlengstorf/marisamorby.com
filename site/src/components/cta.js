@@ -1,21 +1,17 @@
-import React from 'react';
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import { Link } from 'gatsby';
 
 const CTA = ({ to, children }) => (
   <Link
-    css={css`
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-
-      :active,
-      :focus,
-      :hover {
-        cursor: pointer;
-        outline: none;
-      }
-    `}
+    sx={{
+      display: 'block',
+      mx: 'auto',
+      ':active,:focus,:hover': {
+        cursor: 'pointer',
+        outline: 'none',
+      },
+    }}
     to={to}
   >
     {children}

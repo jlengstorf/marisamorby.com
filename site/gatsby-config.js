@@ -24,7 +24,11 @@ module.exports = {
       { slug: 'uncomfortable-things', name: 'Uncomfortable Things' },
     ],
   },
-  __experimentalThemes: [
+  plugins: [
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-theme-ui',
     {
       resolve: 'gatsby-theme-blog-sanity',
       options: {
@@ -37,11 +41,6 @@ module.exports = {
         },
       },
     },
-  ],
-  plugins: [
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -49,12 +48,23 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-mdx',
+      resolve: 'gatsby-plugin-mdx',
       options: {
         defaultLayouts: {
           default: require.resolve('./src/components/section.js'),
         },
         gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              linkImagesToOriginal: false,
+              maxWidth: 540,
+              tracedSVG: { color: '#faf6fa' },
+              withWebp: true,
+            },
+          },
+        ],
+        plugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {

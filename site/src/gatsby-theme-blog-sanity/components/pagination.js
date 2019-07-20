@@ -1,17 +1,17 @@
-import React from 'react';
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import BasePagination from 'gatsby-theme-blog-sanity/src/components/pagination';
-import { colors } from '../../tokens';
-
-const paginationStyles = css`
-  a {
-    color: ${colors.textLight};
-    text-decoration: none;
-  }
-`;
 
 const Pagination = props => (
-  <BasePagination {...props} css={paginationStyles} />
+  <BasePagination
+    {...props}
+    sx={{
+      a: {
+        color: 'muted',
+        textDecoration: 'none',
+      },
+    }}
+  />
 );
 
 export default Pagination;

@@ -1,78 +1,5 @@
-import React from 'react';
-import { css } from '@emotion/core';
-import { colors, typography } from '../tokens';
-
-const formStyles = css`
-  margin-top: 3rem;
-  overflow: visible;
-
-  .honeypot {
-    display: none;
-  }
-
-  label {
-    color: ${colors.textLight};
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    line-height: 1;
-    text-transform: uppercase;
-  }
-
-  input,
-  textarea {
-    background-color: ${colors.brandLight};
-    border: 0;
-    border-bottom: 2px solid ${colors.text}22;
-    display: block;
-    font-size: 16px;
-    margin-top: 0.25rem;
-    padding: 0.5rem;
-    transition: 150ms border-color linear;
-
-    &:focus {
-      border-color: ${colors.brand};
-      outline: 0;
-    }
-  }
-
-  input {
-    max-width: 400px;
-    width: 90vw;
-  }
-
-  textarea {
-    height: 10em;
-    width: 100%;
-  }
-
-  button {
-    background: ${colors.brand};
-    border: 2px solid transparent;
-    border-radius: 0.5rem;
-    color: ${colors.white};
-    display: inline-block;
-    font-family: ${typography.heading.fontFamily};
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.125rem;
-    line-height: 2;
-    max-width: 100%;
-    overflow: hidden;
-    padding: 0 1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-
-    :active,
-    :hover,
-    :focus {
-      border: 2px solid ${colors.brandDark};
-      cursor: pointer;
-      outline: none;
-    }
-  }
-`;
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 
 const Form = () => (
   <form
@@ -81,7 +8,68 @@ const Form = () => (
     name="contact"
     data-netlify-honeypot="full-name"
     data-netlify="true"
-    css={formStyles}
+    sx={{
+      marginTop: 6,
+      overflow: 'visible',
+      '.honeypot': {
+        display: 'none',
+      },
+      label: {
+        color: 'muted',
+        display: 'block',
+        fontSize: 0,
+        fontWeight: 500,
+        letterSpacing: '0.2em',
+        lineHeight: 1,
+        textTransform: 'uppercase',
+      },
+      'input,textarea': {
+        backgroundColor: 'accent',
+        border: 0,
+        borderBottom: '2px solid',
+        borderColor: 'grayAlpha',
+        display: 'block',
+        fontSize: 1,
+        marginTop: 2,
+        padding: 3,
+        transition: '150ms border-color linear',
+        ':focus': {
+          borderColor: 'primary',
+          outline: 0,
+        },
+      },
+      input: {
+        maxWidth: 400,
+        width: '90vw',
+      },
+      textarea: {
+        height: '10em',
+        width: '100%',
+      },
+      button: {
+        backgroundColor: 'primary',
+        border: '2px solid transparent',
+        borderRadius: '10px',
+        color: 'background',
+        display: 'inline-block',
+        fontFamily: 'heading',
+        fontSize: 2,
+        fontWeight: 'heading',
+        letterSpacing: '0.125em',
+        lineHeight: 2,
+        maxWidth: '100%',
+        overflow: 'hidden',
+        py: 0,
+        px: 5,
+        textDecoration: 'none',
+        textTransform: 'uppercase',
+        ':active,:hover,:focus': {
+          borderColor: 'secondary',
+          cursor: 'pointer',
+          outline: 'none',
+        },
+      },
+    }}
   >
     <div className="honeypot">
       <label htmlFor="full-name">
