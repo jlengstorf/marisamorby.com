@@ -63,8 +63,11 @@ const Header = () => {
           },
         },
         nav: {
+          marginTop: 0,
           a: {
-            marginLeft: 2,
+            fontSize: ['80%', '100%'],
+            marginLeft: 1,
+            marginTop: 0,
             ':first-of-type': {
               marginLeft: 0,
             },
