@@ -38,12 +38,13 @@ const Footer = () => {
           padding: 1,
           textDecoration: 'none',
         },
-        p: {
+        '& p': {
           padding: 1,
         },
         '@media (min-width: 540px)': {
           display: 'flex',
           justifyContent: 'space-between',
+          mx: 0,
           px: 'calc((100vw - 540px) / 2)',
           '> *': {
             marginTop: 0,
