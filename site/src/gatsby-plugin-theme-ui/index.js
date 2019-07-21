@@ -56,7 +56,23 @@ export default merge(theme, {
       li: { mt: 2 },
       blockquote: {
         color: 'muted',
+        fontSize: [2, 3],
         fontStyle: 'italic',
+        my: 5,
+        paddingLeft: [5, 6],
+        paddingRight: [3, 5],
+        position: 'relative',
+        '::before': {
+          color: 'grayAlpha',
+          content: '"“"',
+          fontFamily: 'heading',
+          fontSize: [6, 7],
+          fontWeight: 'bold',
+          lineHeight: 1,
+          position: 'absolute',
+          top: 0,
+          left: [0, 4],
+        },
         '> :last-child': {
           fontSize: '87.5%',
           textAlign: 'right',
