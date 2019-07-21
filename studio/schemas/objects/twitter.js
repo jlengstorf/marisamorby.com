@@ -1,12 +1,9 @@
 import React from 'react'
-import Tweet from '@jlengstorf/react-tweet-embed/es'
+// import Tweet from '@jlengstorf/react-tweet-embed/es'
 
 const TweetPreview = ({ value }) => {
-  const { url } = value
-  console.log(url)
-
-  return <Tweet url={url} />
-  // return <p>This will be an embedded tweet.</p>
+  // return <Tweet url={value.url} />
+  return <p>This will be an embedded tweet.</p>
 }
 
 export default {
