@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.14",
+    "@jlengstorf/react-tweet-embed": "^0.0.4",
     "@mdx-js/react": "^1.0.27",
     "@sanity/block-content-to-react": "^2.0.6",
     "dotenv": "^8.0.0",
