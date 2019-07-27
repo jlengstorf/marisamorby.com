@@ -41,7 +41,6 @@ export default merge(theme, {
       'h4,h5,h6': {
         color: 'text',
         fontSize: 3,
-        fontWeight: 700,
         letterSpacing: 2,
         mt: 5,
       },
