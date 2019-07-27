@@ -29,7 +29,8 @@ const Button = ({ to, children, centered, ...props }) => {
           maxWidth: '100%',
           overflow: 'hidden',
           py: 0,
-          px: 5,
+          // This is a specificity hack. I’m not proud.
+          '&&': { px: 5 },
           textDecoration: 'none',
           textTransform: 'uppercase',
           ':active,:hover,:focus': {
